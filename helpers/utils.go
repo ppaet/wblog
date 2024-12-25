@@ -10,7 +10,6 @@ import (
 	"io"
 	"net/smtp"
 	"os"
-	"path/filepath"
 	"strings"
 	"time"
 
@@ -47,7 +46,7 @@ func GetCurrentTime() time.Time {
 }
 
 func GetCurrentDirectory() string {
-	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	dir, err := os.Getwd()
 	if err != nil {
 		seelog.Critical(err)
 	}
